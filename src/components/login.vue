@@ -43,15 +43,15 @@ export default {
     };
   },
   created() {
-    this.getLoginUrl();
+    this.getLoginUrl()
   },
   methods: {
     async getLoginUrl() {
-      const { data: res } = await getUrl();
-      this.getUrlList = res.message;
+      const { data: res } = await getUrl()
+      this.getUrlList = res.message
     }
   }
-};
+}
 </script>
 <style lang="less" scoped>
 img {

@@ -1,10 +1,23 @@
+.van-nav-bar {
+  height: 40px;
+  background-color: #1989fa;
+}
+.van-nav-bar__title {
+  line-height: 40px;
+  color: #ffffff;
+  font-size: 14px;
+}
+.van-image__img {
+  object-fit: fill!important;
+}
 html,
 body,
 #app {
-  height: 100%;
-  overflow-x: hidden;
+    height: 100%;
+    overflow-x: hidden;
 }
+
 .van-image__img {
-  height: 60px;
-  width: 60px;
+    height: 60px;
+    width: 60px;
 }
