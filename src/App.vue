@@ -14,7 +14,7 @@
       @click-left="onClickLeft"
       :left-text="flag ? '' :'返回'"
     />
-    <van-nav-bar title="黑马程序员.vant" v-else left-text="返回" left-arrow @click-left="onClickLeft"/>
+    <van-nav-bar title="黑马程序员.vant" v-else left-text="返回" left-arrow @click-left="onClickLeft" />
     <router-view></router-view>
     <van-tabbar v-model="active">
       <van-tabbar-item name="login" to="/login">
