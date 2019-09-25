@@ -24,7 +24,7 @@
 <script>
 	import {
 		getGoods
-	} from './api'
+	} from '../api'
 	export default {
 		data() {
 			return {
