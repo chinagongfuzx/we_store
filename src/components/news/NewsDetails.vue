@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-nav-bar title="黑马程序员.vant" left-text="返回" left-arrow fixed @click-left="onClickLeft" />
+    <!-- <van-nav-bar title="黑马程序员.vant" left-text="返回" left-arrow fixed @click-left="onClickLeft" />
     <van-tabbar v-model="active" fixed>
       <van-tabbar-item name="home" to="/home">
         <van-icon slot="icon" class="iconfont" class-prefix="icon" name="index-fill"></van-icon>
@@ -12,7 +12,7 @@
       </van-tabbar-item>
       <van-tabbar-item name="friends" to="/friends" icon="cart-o" :info="0">购物车</van-tabbar-item>
       <van-tabbar-item name="setting" to="/setting" icon="search">搜索</van-tabbar-item>
-    </van-tabbar>
+    </van-tabbar> -->
     <div class="news_detail">
       <h3>{{ newsDetail.title }}</h3>
       <div class="news_info">
@@ -56,7 +56,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.van-nav-bar {
+/* .van-nav-bar {
   height: 40px;
   line-height: 40px;
   background-color: #1989fa;
@@ -71,10 +71,10 @@ export default {
 
 .iconfont {
   font-size: 18px;
-}
+} */
 
 .news_detail {
-  padding: 40px 10px 50px;
+  padding: 0 10px;
 
   h3 {
     text-align: center;
