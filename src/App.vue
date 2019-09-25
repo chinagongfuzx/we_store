@@ -73,10 +73,6 @@ export default {
   }
 }
 
-.vvan-tabbar-item {
-  overflow: hidden;
-}
-
 .iconfont {
   font-size: 18px;
 }
