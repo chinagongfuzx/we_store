@@ -34,7 +34,7 @@
       >
     </van-tabbar>
     <transition :name="transtionName">
-      <router-view style="height: 100%"></router-view>
+      <router-view></router-view>
     </transition>
   </div>
 </template>
@@ -72,7 +72,8 @@ export default {
 
 <style lang="less" scoped>
 #app {
-  margin: 40px 0 50px 0;
+  box-sizing: border-box;
+  padding: 40px 0 50px 0;
 }
 .van-nav-bar {
   height: 40px;
@@ -88,6 +89,10 @@ export default {
   .van-nav-bar__text:active {
     background-color: #1989fa;
   }
+}
+
+.vvan-tabbar-item {
+  overflow: hidden;
 }
 
 .iconfont {
