@@ -33,7 +33,7 @@ export default {
   data() {
     return {
       newsDetail: "",
-      active: "home",
+      active: "home"
     }
   },
   methods: {
