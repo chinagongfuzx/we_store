@@ -5,13 +5,9 @@
       :left-text="isBack ? '返回' : ''"
       :left-arrow="isBack"
       @click-left="onClickLeft"
+      fixed
     />
-
-    <transition :name="transtionName">
-      <router-view class="router"></router-view>
-    </transition>
-
-    <van-tabbar v-model="active">
+    <van-tabbar v-model="active" fixed>
       <van-tabbar-item name="login" to="/login">
         <van-icon
           slot="icon"
@@ -37,6 +33,9 @@
         >搜索</van-tabbar-item
       >
     </van-tabbar>
+    <transition :name="transtionName">
+      <router-view style="height: 100%"></router-view>
+    </transition>
   </div>
 </template>
 <script>
@@ -72,6 +71,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+#app {
+  margin: 40px 0 50px 0;
+}
 .van-nav-bar {
   height: 40px;
   line-height: 40px;
@@ -92,6 +94,9 @@ export default {
   font-size: 18px;
 }
 
+.router-view {
+  overflow-x: hidden;
+}
 .slide-leave-to {
   opacity: 0;
 }
@@ -99,9 +104,9 @@ export default {
   transform: translateX(100%);
 }
 
-.slide-enter-active,
-.slide-leave-active,
-.slide-enter-active,
+.slide-enter-active {
+  transition: 0.4s;
+}
 .slide-leave-active {
   transition: 0.3s;
 }

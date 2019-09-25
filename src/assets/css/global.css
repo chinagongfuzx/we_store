@@ -1,3 +1,4 @@
-.van-nav-bar {
-    background-color: blue;
-  }
+html, body, #app {
+    height: 100%;
+    overflow-x: hidden;
+}
