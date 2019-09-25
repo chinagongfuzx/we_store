@@ -1,15 +1,20 @@
 <template>
   <div id="app">
-     <!-- <van-nav-bar title="黑马程序员.vant" v-else left-text="返回" @click-left="onClickLeft"/> -->
-        <!-- <van-tabbar v-model="active">
+    <!-- <van-nav-bar title="黑马程序员.vant" v-else left-text="返回" @click-left="onClickLeft"/> -->
+    <!-- <van-tabbar v-model="active">
       <van-tabbar-item name="login" icon="home-o" to="/">首页</van-tabbar-item>
       <van-tabbar-item name="vip" icon="user-o" to="vip">会员</van-tabbar-item>
       <van-tabbar-item name="cart" icon="cart-o" to="cart">购物车</van-tabbar-item>
       <van-tabbar-item name="search" icon="search" to="search">搜索</van-tabbar-item>
-    </van-tabbar> -->
+    </van-tabbar>-->
 
-    <van-nav-bar title="黑马程序员.vant"  v-if="active === 'login'" @click-left="onClickLeft" :left-text="flag === 'false' ? '' :'返回'"/>
-    <van-nav-bar title="黑马程序员.vant" v-else left-text="返回" left-arrow @click-left="onClickLeft" />
+    <van-nav-bar
+      title="黑马程序员.vant"
+      v-if="active === 'login'"
+      @click-left="onClickLeft"
+      :left-text="flag ? '' :'返回'"
+    />
+    <van-nav-bar title="黑马程序员.vant" v-else left-text="返回" left-arrow @click-left="onClickLeft"/>
     <router-view></router-view>
     <van-tabbar v-model="active">
       <van-tabbar-item name="login" to="/login">
@@ -29,32 +34,38 @@
 export default {
   data() {
     return {
-      active:"login",
-      oldval:'',
-      flag:'false'
+      active: "login",
+      oldval: "",
+      flag: true
+    };
+  },
+  methods: {
+    onClickLeft() {
+      this.$router.go(-1)
+      if (this.active === "login") {
+        this.flag = true
+      }
     }
   },
-  methods:{
-    onClickLeft(){
-      this.active=this.oldval
-      this.$router.go(-1)
-    },
-  },
-  watch:{
-    $route(to,from){
-      this.active=to.path.substr(1)
-      this.oldval=to.path.substr(1)
-      if(to.path === '/news' || to.path === '/photo_sharing' || to.path === '/goods'){
-        this.active='login'
-        this.flag=true
-      } 
+  watch: {
+    $route(to, from) {
+      this.active = to.path.substr(1)
+      this.oldval = to.path.substr(1)
+      if (
+        to.path === "/news" ||
+        to.path === "/photo_sharing" ||
+        to.path === "/goods"
+      ) {
+        this.active = "login"
+        this.flag = false
+      }
     }
   }
-}
+};
 </script>
 
 <style lang="less" scoped>
- .van-nav-bar {
+.van-nav-bar {
   height: 40px;
   line-height: 40px;
   background-color: #1989fa;
@@ -73,5 +84,4 @@ export default {
 .iconfont {
   font-size: 18px;
 }
-
 </style>
