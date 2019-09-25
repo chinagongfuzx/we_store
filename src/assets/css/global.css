@@ -1,7 +1,11 @@
 html, body, #app {
     height: 100%;
+<<<<<<< HEAD
 }
 .van-image__img{
     height: 60px;
     width: 60px;
+=======
+    overflow-x: hidden;
+>>>>>>> 63cb2a52b031d9477a3cad6cdce8eeb809dd467d
 }
