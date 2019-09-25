@@ -34,7 +34,7 @@
       >
     </van-tabbar>
     <transition :name="transtionName" mode="out-in">
-      <router-view class="content"></router-view>
+      <router-view style="min-height: 100%"></router-view>
     </transition>
   </div>
 </template>
