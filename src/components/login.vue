@@ -47,8 +47,9 @@ export default {
   },
   methods: {
     async getLoginUrl() {
+      console.log(123)
       const { data: res } = await getUrl();
-      //   console.log(res)
+      console.log(res)
       this.getUrlList = res.message;
     }
   }
