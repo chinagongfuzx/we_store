@@ -13,8 +13,8 @@
       <van-tabbar-item name="cart" to="cart" icon="cart-o" :info="0">购物车</van-tabbar-item>
       <van-tabbar-item name="search" to="search" icon="search">搜索</van-tabbar-item>
     </van-tabbar>
-    <transition :name="transtionName" mode="out-in">
-      <router-view class="content"></router-view>
+    <transition :name="transtionName">
+      <router-view></router-view>
     </transition>
   </div>
 </template>
@@ -52,9 +52,6 @@ export default {
 #app {
   box-sizing: border-box;
   padding: 40px 0 50px 0;
-  .content {
-    height: 100%;
-  }
 }
 .van-nav-bar {
   height: 40px;
@@ -70,6 +67,10 @@ export default {
   .van-nav-bar__text:active {
     background-color: #1989fa;
   }
+}
+
+.vvan-tabbar-item {
+  overflow: hidden;
 }
 
 .iconfont {
