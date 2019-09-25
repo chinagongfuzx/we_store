@@ -10,7 +10,6 @@ import login from './components/login.vue'
 import news from './components/news/news.vue'
 import NewsDetails from './components/news/NewsDetails.vue'
 import photo_sharing from './components/photo_sharing/photo_sharing.vue'
-import goods from './components/goods/goods.vue'
 
 Vue.use(Router)
 
@@ -39,10 +38,6 @@ export default new Router({
 		{
 			path: '/photo_sharing',
 			component: photo_sharing
-		},
-		{
-			path: '/goods',
-			component: goods
 		}
 	]
 })
