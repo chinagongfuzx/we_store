@@ -33,8 +33,8 @@
         >搜索</van-tabbar-item
       >
     </van-tabbar>
-    <transition :name="transtionName">
-      <router-view></router-view>
+    <transition :name="transtionName" mode="out-in">
+      <router-view class="content"></router-view>
     </transition>
   </div>
 </template>
@@ -74,6 +74,10 @@ export default {
 #app {
   box-sizing: border-box;
   padding: 40px 0 50px 0;
+
+  .content {
+    height: 100%;
+  }
 }
 .van-nav-bar {
   height: 40px;
