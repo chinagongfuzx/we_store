@@ -11,7 +11,7 @@
         <div class="title">
           <span>第{{ index + 1 }}楼</span>
           <span>用户:{{ item.user_name }}</span>
-          <span>发表时间:{{ item.add_time | dateFormat }}</span>
+          <span>发表时间:{{ item.add_time | dataFormat }}</span>
         </div>
         <div class="content">
           {{ item.content }}

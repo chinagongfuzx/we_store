@@ -3,7 +3,7 @@
       <div v-for="item in detailList" :key="item.id">
         <h4>{{item.title}}</h4>
         <van-row type="flex" justify="space-between">
-          <van-col span="12">发表时间：{{item.add_time | dataFormat}}</van-col>
+          <van-col span="12">发表时间：{{item.add_time | dataFormat }}</van-col>
           <van-col>点击：{{item.click}}</van-col>
         </van-row>
         <hr/>
@@ -14,18 +14,17 @@
         </ul>
         <p v-html="item.content"></p>
       </div>
-      <div class="comment">
-        <h3>发表评论</h3>
-        <hr/>
-        
-      </div>
+      <comment :id="id"></comment>
     </div>
+    
 </template>
            
 <script>
 import { ImagePreview } from 'vant'
 import { getPicDetailApi, getPicApi } from '@/api'
+import Comment from "../common/Comment"
 export default {
+  props: ["id"],
   data () {
     return {
       detailList: [],
@@ -39,7 +38,7 @@ export default {
   },
   methods: {
     async getDetail () {
-      // console.log(imgId)
+      // console.log(this.$route.params.id)
       const {data: res} = await getPicDetailApi(this.$route.params.id)
       console.log(res)
       this.detailList = res.message
@@ -58,7 +57,10 @@ export default {
     },
     onClose() {
     }
-  },           
+  },
+  components: {
+    comment: Comment
+  }        
 }
 </script>
 <style lang="less" scoped>

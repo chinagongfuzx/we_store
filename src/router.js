@@ -32,7 +32,8 @@ export default new Router({
     },
     {
       path: '/photo_sharing/info/:id',
-      component: Picdetail
+      component: Picdetail,
+      props: true
     },
     {
       path: '/goods',

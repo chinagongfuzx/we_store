@@ -16,8 +16,8 @@ import { Lazyload } from 'vant'
 Vue.use(Lazyload)
 Vue.config.productionTip = false
 
-Vue.filter('dateFormat', (date) => {
-  return moment(date).format('YYYY-M-D')
+Vue.filter('dataFormat', function(msg) {
+  return moment(msg).format('YYYY-MM-DD')
 })
 
 new Vue({
