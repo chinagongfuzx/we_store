@@ -28,7 +28,7 @@ export default {
   data() {
     return {
       newsList: [],
-      isLoading: true
+      isLoading: false
     }
   },
   computed: {
