@@ -1,7 +1,10 @@
-html, body, #app {
-    height: 100%;
+html,
+body,
+#app {
+  height: 100%;
+  overflow-x: hidden;
 }
-.van-image__img{
-    height: 60px;
-    width: 60px;
+.van-image__img {
+  height: 60px;
+  width: 60px;
 }

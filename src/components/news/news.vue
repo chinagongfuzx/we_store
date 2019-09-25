@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="box">
     <div class="loading" v-if="pageLoading" >
       <van-loading type="spinner" color="#1989fa" />
     </div>
@@ -28,7 +28,7 @@ export default {
   data() {
     return {
       newsList: [],
-      isLoading: false
+      isLoading: true
     }
   },
   computed: {
@@ -60,11 +60,10 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-.loading {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .newsNav {
   background-color: skyblue;
