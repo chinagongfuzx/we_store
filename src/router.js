@@ -6,6 +6,9 @@ import login from './components/login.vue'
 import news from './components/news/news.vue'
 import NewsDetails from './components/news/NewsDetails.vue'
 import goods from './components/goods/goods.vue'
+import vip from './components/vip/vip.vue'
+import cart from './components/cart/cart.vue'
+import search from './components/search/search.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -38,6 +41,18 @@ export default new Router({
     {
       path: '/goods',
       component: goods
+    },
+    {
+      path: '/vip',
+      component: vip
+    },
+    {
+      path: '/cart',
+      component: cart
+    },
+    {
+      path: '/search',
+      component: search
     }
   ]
 })
