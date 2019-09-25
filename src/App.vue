@@ -8,7 +8,7 @@
       <van-tabbar-item name="search" icon="search" to="search">搜索</van-tabbar-item>
     </van-tabbar> -->
 
-    <van-nav-bar title="黑马程序员.vant"  v-if="active === 'login'"/>
+    <van-nav-bar title="黑马程序员.vant"  v-if="active === 'login'" @click-left="onClickLeft" :left-text="flag === 'false' ? '' :'返回'"/>
     <van-nav-bar title="黑马程序员.vant" v-else left-text="返回" left-arrow @click-left="onClickLeft" />
     <router-view></router-view>
     <van-tabbar v-model="active">
@@ -30,7 +30,8 @@ export default {
   data() {
     return {
       active:"login",
-      oldval:''
+      oldval:'',
+      flag:'false'
     }
   },
   methods:{
@@ -43,6 +44,10 @@ export default {
     $route(to,from){
       this.active=to.path.substr(1)
       this.oldval=to.path.substr(1)
+      if(to.path === '/news' || to.path === '/photo_sharing' || to.path === '/goods'){
+        this.active='login'
+        this.flag=true
+      } 
     }
   }
 }
