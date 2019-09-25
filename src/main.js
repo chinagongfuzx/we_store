@@ -9,11 +9,14 @@ import './assets/css/global.css'
 import './assets/font/iconfont.css'
 import moment from 'moment'
 Vue.use(Vant)
+import { Lazyload } from 'vant'
 
+// options 为可选参数，无则不传
+Vue.use(Lazyload)
 Vue.config.productionTip = false
 
-Vue.filter('dateFormat', (date) => {
-  return moment(date).format('YYYY-M-D')
+Vue.filter('dataFormat', function(msg) {
+  return moment(msg).format('YYYY-MM-DD')
 })
 
 new Vue({
@@ -21,3 +24,4 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('#app')
+

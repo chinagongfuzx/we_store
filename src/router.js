@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import photo_sharing from './components/photo_sharing/photo_sharing.vue'
+import Picdetail from './components/photo_sharing/Picdetail.vue'
 import login from './components/login.vue'
 import news from './components/news/news.vue'
 import NewsDetails from './components/news/NewsDetails.vue'
-import photo_sharing from './components/photo_sharing/photo_sharing.vue'
 import goods from './components/goods/goods.vue'
 import vip from './components/vip/vip.vue'
 import cart from './components/cart/cart.vue'
@@ -31,6 +32,11 @@ export default new Router({
     {
       path: '/photo_sharing',
       component: photo_sharing
+    },
+    {
+      path: '/photo_sharing/info/:id',
+      component: Picdetail,
+      props: true
     },
     {
       path: '/goods',

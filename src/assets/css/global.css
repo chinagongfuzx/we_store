@@ -1,3 +1,15 @@
+.van-nav-bar {
+  height: 40px;
+  background-color: #1989fa;
+}
+.van-nav-bar__title {
+  line-height: 40px;
+  color: #ffffff;
+  font-size: 14px;
+}
+.van-image__img {
+  object-fit: fill!important;
+}
 html,
 body,
 #app {

@@ -22,10 +22,10 @@
 export default {
   data() {
     return {
-      active: "login",
+      active: 'login',
       isBack: false,
-      actives: ["/login", "/vip", "/cart", "/search"],
-      transtionName: "slide"
+      actives: ['/login', '/vip', '/cart', '/search'],
+      transtionName: 'slide'
     }
   },
   methods: {
