@@ -20,26 +20,26 @@
         <span>点击次数：{{ newsDetail.click }}</span>
       </div>
       <div class="content" v-html="newsDetail.content"></div>
-      <comment :id="newId"></comment>
+      <comment v-if="newsDetail" :id="newId"></comment>
     </div>
   </div>
 </template>
 
 <script>
-import { getNewsDetailApi } from "@/api"
-import Comment from "../common/Comment"
+import { getNewsDetailApi } from '@/api'
+import Comment from '../common/Comment'
 export default {
-  props: ["newId"],
+  props: ['newId'],
   data() {
     return {
-      newsDetail: "",
-      active: "home"
+      newsDetail: {},
+      active: 'home'
     }
   },
   methods: {
     async getNewsDetail() {
       const { data: res } = await getNewsDetailApi(this.newId)
-      res.message[0].content = res.message[0].content.replace(/\<br\s\/\>/g, "")
+      res.message[0].content = res.message[0].content.replace(/\<br\s\/\>/g, '')
       this.newsDetail = res.message[0]
     },
     onClickLeft() {
@@ -56,23 +56,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-/* .van-nav-bar {
-  height: 40px;
-  line-height: 40px;
-  background-color: #1989fa;
-
-  .van-nav-bar__text,
-  .van-icon,
-  .van-nav-bar__title {
-    color: #fff;
-    font-size: 14px;
-  }
-}
-
-.iconfont {
-  font-size: 18px;
-} */
-
 .news_detail {
   padding: 0 10px;
 
@@ -97,7 +80,7 @@ export default {
   .content {
     font-size: 16px;
     line-height: 20px;
-    font-family: "Microsoft YaHei";
+    font-family: 'Microsoft YaHei';
     color: #535353;
   }
 }

@@ -48,14 +48,12 @@ export default {
   methods: {
     async getLoginUrl() {
       const { data: res } = await getUrl();
-      //   console.log(res)
       this.getUrlList = res.message;
     }
   }
 };
 </script>
 <style lang="less" scoped>
-
 img {
   width: 100%;
   height: 100%;

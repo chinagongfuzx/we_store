@@ -1,7 +1,6 @@
 import axios from 'axios'
 axios.defaults.baseURL = 'http://www.liulongbin.top:3005/'
-export const getUrl = params => axios.get('api/getlunbo', { params })
-
+export const getUrl = () => axios.get('api/getlunbo')
 // 获取图文资讯
 export const getNewsList = params => axios.get('api/getnewslist')
 
