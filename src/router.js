@@ -27,7 +27,6 @@ export default new Router({
 		{ path: '/news', component: news },
 		{ path: '/news/detail/:newId', component: NewsDetails, props: true },
 		{ path: '/photo_sharing', component: photo_sharing },
-		{ path: '/goods', component: goods },
 		{ path: '/vip', component: vip },
 		{ path: '/cart', component: cart },
 		{ path: '/search', component: search }
