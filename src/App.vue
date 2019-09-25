@@ -11,29 +11,15 @@
     />
     <van-tabbar v-model="active" fixed v-if="this.$route.path !== '/cart'">
       <van-tabbar-item name="login" to="/login">
-        <van-icon
-          slot="icon"
-          class="iconfont"
-          class-prefix="icon"
-          name="index-fill"
-        ></van-icon>
+        <van-icon slot="icon" class="iconfont" class-prefix="icon" name="index-fill"></van-icon>
         <span>首页</span>
       </van-tabbar-item>
       <van-tabbar-item name="vip" to="vip">
-        <van-icon
-          slot="icon"
-          class="iconfont"
-          class-prefix="icon"
-          name="icon_zhanghao"
-        ></van-icon>
+        <van-icon slot="icon" class="iconfont" class-prefix="icon" name="icon_zhanghao"></van-icon>
         <span>会员</span>
       </van-tabbar-item>
-      <van-tabbar-item name="cart" to="cart" icon="cart-o" :info="0"
-        >购物车</van-tabbar-item
-      >
-      <van-tabbar-item name="search" to="search" icon="search"
-        >搜索</van-tabbar-item
-      >
+      <van-tabbar-item name="cart" to="cart" icon="cart-o" :info="0">购物车</van-tabbar-item>
+      <van-tabbar-item name="search" to="search" icon="search">搜索</van-tabbar-item>
     </van-tabbar>
     <transition :name="transtionName" mode="out-in">
       <keep-alive>
@@ -62,9 +48,14 @@ export default {
     },
     skip(to) {
       this.isBack = to.path === "/login" ? false : true;
-      this.active = this.actives.includes(to.path)
-        ? to.path.substring(1)
-        : "login";
+      if (this.actives.includes(to.path)) {
+        this.active = to.path.substring(1)
+      } else if (to.path === '/addgoods') {
+        this.active = 'search'
+      } else {
+        this.active = "login"
+      }
+
     }
   },
   watch: {
