@@ -8,6 +8,11 @@ export const getGoods = (number) => {
 }
 
 // 商品详情页
-export const goodDetails = (id) => {
+export const goodsDetails = (id) => {
+	return axios.get(`/api/goods/getinfo/${id}`)
+}
+
+// 图文介绍
+export const imgTxtDetails = (id) => {
 	return axios.get(`/api/goods/getdesc/${id}`)
 }
