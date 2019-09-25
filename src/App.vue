@@ -34,15 +34,9 @@ export default {
     return {
       active: 'login',
       isBack: false,
-<<<<<<< HEAD
       actives: ["/login", "/vip", "/cart", "/search"],
       transtionName: "slide-left"
     };
-=======
-      actives: ['/login', '/vip', '/cart', '/search'],
-      transtionName: 'slide'
-    }
->>>>>>> 4fe8442ee32ab2058347f3c2a54521eeb509dbec
   },
   methods: {
     onClickLeft() {
