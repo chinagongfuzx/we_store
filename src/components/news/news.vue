@@ -1,9 +1,12 @@
 <template>
-  <div>
+  <div class="box">
     <!-- 导航栏
     <van-nav-bar title="黑马程序员.vant" left-text="返回" left-arrow class="newsNav"/>-->
-
-    <!-- 下拉刷新 -->
+<div class="loading" v-if="pageLoading" >
+      <van-loading type="spinner" color="#1989fa" />
+    </div>
+    <div>
+      <!-- 下拉刷新 -->
     <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
       <!-- 图文资讯区域 -->
 
@@ -21,6 +24,9 @@
         </van-card>
       </van-list>
     </van-pull-refresh>
+
+    </div>
+
   </div>
 </template>
 <script>
@@ -31,23 +37,23 @@ export default {
     return {
       newsList: [],
       isLoading: false,
-      onLoading: true
+      onLoading: true,
+    }
+  },
+  computed: {
+    pageLoading() {
+      return this.newsList.length ? false : true
     }
   },
   created() {
     this.getNew()
   },
   methods: {
-    async getNew() {
-      const { data: res } = await getNewsList()
-      // console.log(res.meta);
-      if (res.status !== 0) {
-        return this.$toast.error("获取新闻列表失败！")
-      }
-
-      this.newsList = res.message
-      
-      // console.log(this.newsList, 77777)
+    getNew() {
+      setTimeout(async () => {
+        const { data: res } = await getNewsList()
+        this.newsList = res.message
+      }, 500)
     },
 
     // 下拉刷新
@@ -66,6 +72,11 @@ export default {
 }
 </script>
 <style lang="less" scoped>
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .newsNav {
   background-color: skyblue;
   color: #fffffe;
@@ -98,5 +109,14 @@ export default {
   color: #226AFF;
   padding-top: 25px;
   margin-right: 20px;
+}
+.van-image__img {
+    width: 100%;
+    height: 100%;
+}
+
+.van-card {
+    width: 400px;
+    height: 70px;
 }
 </style>
