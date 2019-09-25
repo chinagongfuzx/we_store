@@ -3,11 +3,13 @@
     <van-nav-bar
       title="黑马程序员.vant"
       :left-text="isBack ? '返回' : ''"
+      :right-text="this.$route.path === '/search' ? '添加' : ''"
       :left-arrow="isBack"
       @click-left="onClickLeft"
+      @click-right="onClickRight"
       fixed
     />
-    <van-tabbar v-model="active" fixed>
+    <van-tabbar v-model="active" fixed v-if="this.$route.path !== '/cart'">
       <van-tabbar-item name="login" to="/login">
         <van-icon
           slot="icon"
@@ -34,7 +36,9 @@
       >
     </van-tabbar>
     <transition :name="transtionName" mode="out-in">
-      <router-view style="min-height: 100%"></router-view>
+      <keep-alive>
+        <router-view style="min-height: 100%"></router-view>
+      </keep-alive>
     </transition>
   </div>
 </template>
@@ -45,12 +49,16 @@ export default {
       active: "login",
       isBack: false,
       actives: ["/login", "/vip", "/cart", "/search"],
-      transtionName: "slide"
+      transtionName: "slide-left"
     };
   },
   methods: {
     onClickLeft() {
+      this.$route.meta.isBack = true;
       this.$router.go(-1);
+    },
+    onClickRight() {
+      this.$router.push('/addgoods')
     },
     skip(to) {
       this.isBack = to.path === "/login" ? false : true;
@@ -60,7 +68,9 @@ export default {
     }
   },
   watch: {
-    $route(to) {
+    $route(to, from) {
+      this.transtionName = from.meta.isBack ? "slide-right" : "slide-left";
+      to.meta.isBack = false;
       this.skip(to);
     }
   },
@@ -99,20 +109,21 @@ export default {
   font-size: 18px;
 }
 
-.router-view {
-  overflow-x: hidden;
-}
-.slide-leave-to {
+.slide-left-leave-to,
+.slide-right-leave-to {
   opacity: 0;
 }
-.slide-enter {
+.slide-left-enter {
   transform: translateX(100%);
 }
-
-.slide-enter-active {
-  transition: 0.4s;
+.slide-right-enter {
+  transform: translateX(-100%);
 }
-.slide-leave-active {
+
+.slide-left-enter-active,
+.slide-right-enter-active,
+.slide-left-leave-active,
+.slide-right-leave-active {
   transition: 0.3s;
 }
 </style>
