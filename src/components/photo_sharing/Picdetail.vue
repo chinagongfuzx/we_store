@@ -14,18 +14,16 @@
         </ul>
         <p v-html="item.content"></p>
       </div>
-      <div class="comment">
-        <h3>发表评论</h3>
-        <hr/>
-        
-      </div>
+      <comment :id="id"></comment>
     </div>
 </template>
            
 <script>
 import { ImagePreview } from 'vant'
 import { getPicDetailApi, getPicApi } from '@/api'
+import Comment from "../common/Comment"
 export default {
+  props: ["id"],
   data () {
     return {
       detailList: [],
@@ -58,7 +56,10 @@ export default {
     },
     onClose() {
     }
-  },           
+  },
+  components: {
+    comment: Comment
+  }          
 }
 </script>
 <style lang="less" scoped>
