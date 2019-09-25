@@ -16,15 +16,13 @@
       </div>
       <comment :id="id"></comment>
     </div>
-    
-</template>
-           
+</template>        
 <script>
 import { ImagePreview } from 'vant'
 import { getPicDetailApi, getPicApi } from '@/api'
-import Comment from "../common/Comment"
+import Comment from '../common/Comment'
 export default {
-  props: ["id"],
+  props: ['id'],
   data () {
     return {
       detailList: [],
@@ -39,12 +37,12 @@ export default {
   methods: {
     async getDetail () {
       // console.log(this.$route.params.id)
-      const {data: res} = await getPicDetailApi(this.$route.params.id)
+      const { data: res } = await getPicDetailApi(this.$route.params.id)
       console.log(res)
       this.detailList = res.message
     },
     async getPicList () {
-      const {data: res} = await getPicApi(this.$route.params.id)
+      const { data: res } = await getPicApi(this.$route.params.id)
       console.log(res)
       this.picList = res.message
     },
@@ -60,7 +58,7 @@ export default {
   },
   components: {
     comment: Comment
-  }        
+  }       
 }
 </script>
 <style lang="less" scoped>
@@ -104,6 +102,5 @@ export default {
   .van-image__img {
     width: 100%;
     height: 100%;
-    object-fit: fill!important;
   } 
 </style>

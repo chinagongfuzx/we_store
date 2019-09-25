@@ -1,6 +1,6 @@
 import axios from 'axios'
 axios.defaults.baseURL = 'http://www.liulongbin.top:3005/'
-export const getUrl =params => axios.get('api/getlunbo',{params})
+export const getUrl = params => axios.get('api/getlunbo', { params })
 // 获取图片列表的分类信息
 export const cateListApi = params => {
   return axios.get('/api/getimgcategory')
