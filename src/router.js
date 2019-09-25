@@ -21,7 +21,7 @@ export default new Router({
       component: news
     },
     {
-      path: '/news/:newId',
+      path: '/news/detail/:newId',
       component: NewsDetails,
       props: true
     },
