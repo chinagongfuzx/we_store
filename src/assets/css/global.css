@@ -1,0 +1,7 @@
+html, body, #app {
+    height: 100%;
+}
+.van-image__img{
+    height: 60px;
+    width: 60px;
+}
