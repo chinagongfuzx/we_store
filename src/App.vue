@@ -1,32 +1,41 @@
 <template>
   <div id="app">
-    <!-- <van-nav-bar title="黑马程序员.vant" v-else left-text="返回" @click-left="onClickLeft"/> -->
-    <!-- <van-tabbar v-model="active">
-      <van-tabbar-item name="login" icon="home-o" to="/">首页</van-tabbar-item>
-      <van-tabbar-item name="vip" icon="user-o" to="vip">会员</van-tabbar-item>
-      <van-tabbar-item name="cart" icon="cart-o" to="cart">购物车</van-tabbar-item>
-      <van-tabbar-item name="search" icon="search" to="search">搜索</van-tabbar-item>
-    </van-tabbar>-->
-
     <van-nav-bar
       title="黑马程序员.vant"
-      v-if="active === 'login'"
+      :left-text="isBack ? '返回' : ''"
+      :left-arrow="isBack"
       @click-left="onClickLeft"
-      :left-text="flag ? '' :'返回'"
     />
-    <van-nav-bar title="黑马程序员.vant" v-else left-text="返回" left-arrow @click-left="onClickLeft"/>
-    <router-view></router-view>
+
+    <transition :name="transtionName">
+      <router-view class="router"></router-view>
+    </transition>
+
     <van-tabbar v-model="active">
       <van-tabbar-item name="login" to="/login">
-        <van-icon slot="icon" class="iconfont" class-prefix="icon" name="index-fill"></van-icon>
+        <van-icon
+          slot="icon"
+          class="iconfont"
+          class-prefix="icon"
+          name="index-fill"
+        ></van-icon>
         <span>首页</span>
       </van-tabbar-item>
       <van-tabbar-item name="vip" to="vip">
-        <van-icon slot="icon" class="iconfont" class-prefix="icon" name="icon_zhanghao"></van-icon>
+        <van-icon
+          slot="icon"
+          class="iconfont"
+          class-prefix="icon"
+          name="icon_zhanghao"
+        ></van-icon>
         <span>会员</span>
       </van-tabbar-item>
-      <van-tabbar-item name="cart" to="cart" icon="cart-o" :info="0">购物车</van-tabbar-item>
-      <van-tabbar-item name="search" to="search" icon="search">搜索</van-tabbar-item>
+      <van-tabbar-item name="cart" to="cart" icon="cart-o" :info="0"
+        >购物车</van-tabbar-item
+      >
+      <van-tabbar-item name="search" to="search" icon="search"
+        >搜索</van-tabbar-item
+      >
     </van-tabbar>
   </div>
 </template>
@@ -35,31 +44,29 @@ export default {
   data() {
     return {
       active: "login",
-      oldval: "",
-      flag: true
+      isBack: false,
+      actives: ["/login", "/vip", "/cart", "/search"],
+      transtionName: "slide"
     };
   },
   methods: {
     onClickLeft() {
-      this.$router.go(-1)
-      if (this.active === "login") {
-        this.flag = true
-      }
+      this.$router.go(-1);
+    },
+    skip(to) {
+      this.isBack = to.path === "/login" ? false : true;
+      this.active = this.actives.includes(to.path)
+        ? to.path.substring(1)
+        : "login";
     }
   },
   watch: {
-    $route(to, from) {
-      this.active = to.path.substr(1)
-      this.oldval = to.path.substr(1)
-      if (
-        to.path === "/news" ||
-        to.path === "/photo_sharing" ||
-        to.path === "/goods"
-      ) {
-        this.active = "login"
-        this.flag = false
-      }
+    $route(to) {
+      this.skip(to);
     }
+  },
+  created() {
+    this.skip(this.$route);
   }
 };
 </script>
@@ -83,5 +90,19 @@ export default {
 
 .iconfont {
   font-size: 18px;
+}
+
+.slide-leave-to {
+  opacity: 0;
+}
+.slide-enter {
+  transform: translateX(100%);
+}
+
+.slide-enter-active,
+.slide-leave-active,
+.slide-enter-active,
+.slide-leave-active {
+  transition: 0.3s;
 }
 </style>
