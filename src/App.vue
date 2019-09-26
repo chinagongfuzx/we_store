@@ -18,7 +18,7 @@
         <van-icon slot="icon" class="iconfont" class-prefix="icon" name="icon_zhanghao"></van-icon>
         <span>会员</span>
       </van-tabbar-item>
-      <van-tabbar-item name="cart" to="cart" icon="cart-o" :info="0">购物车</van-tabbar-item>
+      <van-tabbar-item name="cart" to="cart" icon="cart-o" :info="$store.state.count">购物车</van-tabbar-item>
       <van-tabbar-item name="search" to="search" icon="search">搜索</van-tabbar-item>
     </van-tabbar>
     <transition :name="transtionName" mode="out-in" @before-enter="beforeEnter" @after-enter="afterEnter">
@@ -34,7 +34,8 @@ export default {
       isBack: false,
       actives: ['/login', '/vip', '/cart', '/search'],
       transtionName: 'slide-left',
-      isSubBar: true
+      isSubBar: true,
+      cartCount: 0
     }
   },
   methods: {
@@ -71,6 +72,10 @@ export default {
   },
   created() {
     this.skip(this.$route)
+    const carData = window.localStorage.carData
+    if (carData) {
+      this.$store.commit('saveCar', JSON.parse(carData))
+    }
   }
 }
 </script>
@@ -83,7 +88,6 @@ export default {
 
   .content {
     height: 100%;
-    overflow: auto;
   }
 }
 
