@@ -22,9 +22,7 @@
       <van-tabbar-item name="search" to="search" icon="search">搜索</van-tabbar-item>
     </van-tabbar>
     <transition :name="transtionName" mode="out-in">
-      <keep-alive>
-        <router-view style="min-height: 100%"></router-view>
-      </keep-alive>
+      <router-view style="min-height: 100%"></router-view>
     </transition>
   </div>
 </template>
@@ -32,43 +30,42 @@
 export default {
   data() {
     return {
-      active: "login",
+      active: 'login',
       isBack: false,
-      actives: ["/login", "/vip", "/cart", "/search"],
-      transtionName: "slide-left"
-    };
+      actives: ['/login', '/vip', '/cart', '/search'],
+      transtionName: 'slide-left'
+    }
   },
   methods: {
     onClickLeft() {
-      this.$route.meta.isBack = true;
-      this.$router.go(-1);
+      this.$route.meta.isBack = true
+      this.$router.go(-1)
     },
     onClickRight() {
       this.$router.push('/addgoods')
     },
     skip(to) {
-      this.isBack = to.path === "/login" ? false : true;
+      this.isBack = to.path === '/login' ? false : true
       if (this.actives.includes(to.path)) {
         this.active = to.path.substring(1)
       } else if (to.path === '/addgoods') {
         this.active = 'search'
       } else {
-        this.active = "login"
+        this.active = 'login'
       }
-
     }
   },
   watch: {
     $route(to, from) {
-      this.transtionName = from.meta.isBack ? "slide-right" : "slide-left";
-      to.meta.isBack = false;
-      this.skip(to);
+      this.transtionName = from.meta.isBack ? 'slide-right' : 'slide-left'
+      to.meta.isBack = false
+      this.skip(to)
     }
   },
   created() {
-    this.skip(this.$route);
+    this.skip(this.$route)
   }
-};
+}
 </script>
 
 <style lang="less" scoped>
