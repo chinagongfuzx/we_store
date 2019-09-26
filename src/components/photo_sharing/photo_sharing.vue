@@ -1,6 +1,5 @@
 <template>
   <div>
-      <!-- <van-nav-bar title="黑马程序员.vant" left-text="< 返回" :fixed="true" @click-left="onClickLeft" class="head_box"/> -->
       <van-tabs v-model="activeName" swipeable @click="getContent()">
         <van-tab :title="item.title" :name="item.id" v-for="(item, index) in cateList" :key="index">
         </van-tab>
@@ -15,12 +14,6 @@
           </div>
         </li>
     </ul>
-    <!-- <van-tabbar v-model="active">
-      <van-tabbar-item name="home" icon="home-o">首页</van-tabbar-item>
-      <van-tabbar-item name="search" icon="user-o">会员</van-tabbar-item>
-      <van-tabbar-item name="friends" icon="cart-o" info="0">购物车</van-tabbar-item>
-      <van-tabbar-item name="setting" icon="search">搜索</van-tabbar-item>
-    </van-tabbar> -->
   </div>
 </template>
 <script>
@@ -55,16 +48,10 @@ export default {
     goDetail (id) {
         this.$router.push(`/photo_sharing/info/${id}`)
     }
-    // onClickLeft () {
-    //     this.$router.go(-1)
-    // }
   }
 }
 </script>
 <style scoped lang="less">
-//   .van-nav-bar {
-//     background-color: blue;
-//   }
   .item_list {
     padding: 0 10px;
     li {

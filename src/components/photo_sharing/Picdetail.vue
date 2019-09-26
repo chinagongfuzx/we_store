@@ -12,22 +12,27 @@
             <img :src="item.src" alt="" @click="ImgClick(index)">
           </li>
         </ul>
-        <p v-html="item.content"></p>
+        <p v-html="item.content" class="content"></p>
       </div>
       <comment :id="id"></comment>
+      <van-image-preview
+        v-model="show"
+        :images="ImgList">
+      </van-image-preview>
     </div>
 </template>        
 <script>
 import { ImagePreview } from 'vant'
 import { getPicDetailApi, getPicApi } from '@/api'
-import Comment from '../common/Comment'
+import Comment from "../common/Comment"
 export default {
-  props: ['id'],
+  props: ["id"],
   data () {
     return {
       detailList: [],
       picList: [],
       ImgList: [],
+      show: false
     }
   },
   created() {
@@ -51,18 +56,23 @@ export default {
     },
     ImgClick (index) {
       // console.log(this.ImgList)
-      ImagePreview({
-        images: this.ImgList,
-        startPosition: index,
-        onClose() {
-        }
+      this.show = true
+      // ImagePreview({
+      //   images: this.ImgList,
+      //   startPosition: index,
+      // })
+      this.$nextTick(()=> {
+        document.querySelectorAll('.van-image__img').forEach(item=>{
+          item.style.objectFit = 'none'
+          item.width="300px"
+          item.margin = "0 auto"
+        })
       })
-      // document.getElementsByClassName('.van-image__img').style.objectFit='fill'
     }
   },
   components: {
     comment: Comment
-  }       
+  }          
 }
 </script>
 <style lang="less" scoped>
@@ -77,7 +87,8 @@ export default {
   }
   .van-row--justify-space-between {
     font-size: 12px;
-    color: #8f8f94
+    color: #8f8f94;
+    margin-bottom: 15px;
   }
   .van-col:nth-child(2) {
     float: right;
@@ -103,9 +114,7 @@ export default {
         
     }
   }
-  .van-image-preview{
-/deep/img {
-        object-fit: fill!important
-      }
-  } 
+  .content {
+    font-size: 16px;
+  }
 </style>
