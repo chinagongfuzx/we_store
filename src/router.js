@@ -18,11 +18,15 @@ export default new Router({
       redirect: '/login'
     },
     {
-      path: '/login', component: login
+      path: '/login',
+      component: login
     },
     {
       path: '/news',
-      component: news
+      component: news,
+      meta: {
+        isSaveScroll: true
+      }
     },
     {
       path: '/news/detail/:newId',
@@ -31,7 +35,10 @@ export default new Router({
     },
     {
       path: '/photo_sharing',
-      component: photo_sharing
+      component: photo_sharing,
+      meta: {
+        isSaveScroll: true
+      }
     },
     {
       path: '/photo_sharing/info/:id',
@@ -40,7 +47,10 @@ export default new Router({
     },
     {
       path: '/goods',
-      component: goods
+      component: goods,
+      meta: {
+        isSaveScroll: true
+      }
     },
     {
       path: '/vip',
