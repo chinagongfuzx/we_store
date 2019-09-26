@@ -7,7 +7,7 @@
   </div>
 </template>
 <script>
-import addSearchList from '@/api'
+import { addSearchList } from '@/api'
 export default {
   data() {
     return {
