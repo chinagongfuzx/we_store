@@ -35,22 +35,20 @@ export default {
   data() {
     return {
       active: "login",
-      oldval: "",
       flag: true
     };
   },
   methods: {
     onClickLeft() {
       this.$router.go(-1)
-      if (this.active === "login") {
-        this.flag = true
+      if(this.active==='login'){
+        this.flag=true
       }
     }
   },
   watch: {
     $route(to, from) {
       this.active = to.path.substr(1)
-      this.oldval = to.path.substr(1)
       if (
         to.path === "/news" ||
         to.path === "/photo_sharing" ||

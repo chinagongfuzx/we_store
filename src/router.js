@@ -7,6 +7,7 @@ import goods from './components/goods/goods.vue'
 import vip from './components/vip/vip.vue'
 import cart from './components/cart/cart.vue'
 import search from './components/search/search.vue'
+import searchAdd from './components/search/searchAdd.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -41,6 +42,10 @@ export default new Router({
     {
       path: '/search',
       component: search
+    },
+    {
+      path: '/searchAdd',
+      component: searchAdd
     }
   ]
 })
