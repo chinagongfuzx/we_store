@@ -71,6 +71,10 @@
 					price: this.details.sell_price
 				})
 				localStorage.setItem('carData', JSON.stringify(arr))
+				this.$toast({
+					duration: 1000,
+					message: '加载成功'
+				})
 			},
 			addCar() {
 				const carData = localStorage.getItem('carData')
@@ -86,10 +90,13 @@
 						additem.conut = this.buyCount
 						additem.price = this.details.sell_price
 						localStorage.setItem('carData', JSON.stringify(carArr))
+						this.$toast({
+							duration: 1000,
+							message: '加载成功'
+						})
 					} else {
 						this.createStorage(carArr)
 					}
-
 				}
 			},
 			toImgTxtDetaiks() {
