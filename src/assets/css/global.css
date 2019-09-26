@@ -8,14 +8,3 @@ body,
 ::-webkit-scrollbar {
     display: none;
 }
-
-.van-nav-bar {
-  height: 40px;
-  background-color: #1989fa;
-}
-
-.van-nav-bar__title {
-  line-height: 40px;
-  color: #ffffff;
-  font-size: 14px;
-}
