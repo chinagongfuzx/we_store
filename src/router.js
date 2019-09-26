@@ -22,6 +22,7 @@ export default new Router({
 		{ path: '/imgTxtDetails', component: ImgTxtDetails },
 		{ path: '/goodsDetails', component: GoodsDetails },
 		{ path: '/goodsComment', component: GoodsComment },
+		
 		{ path: '/', redirect: '/login' },
 		{ path: '/login', component: login },
 		{ path: '/news', component: news },
