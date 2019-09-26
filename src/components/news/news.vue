@@ -3,7 +3,7 @@
     <!-- 导航栏
     <van-nav-bar title="黑马程序员.vant" left-text="返回" left-arrow class="newsNav"/>-->
     <div class="loading" v-if="pageLoading">
-      <van-loading type="spinner" color="#1989fa"/>
+      <van-loading type="spinner" color="#1989fa" />
     </div>
     <div>
       <!-- 下拉刷新 -->
@@ -17,10 +17,9 @@
             :title="item.title"
             :thumb="item.img_url"
             @click="toDetail(item.id)"
-            :class="[i1 === 0 ? '' : 'bdtop']"
           >
-            <div slot="price">发表时间 ：{{item.add_time | dateFormat}}</div>
-            <div slot="num" class="van-num">点击 ： {{item.click}}</div>
+            <div slot="price">发表时间：{{ item.add_time | dateFormat }}</div>
+            <div slot="num">点击：{{ item.click }}</div>
           </van-card>
         </van-list>
       </van-pull-refresh>
@@ -75,44 +74,47 @@ export default {
   justify-content: center;
   align-items: center;
 }
-.newsNav {
-  background-color: skyblue;
-  color: #fffffe;
-  font-size: 12px;
+// .van-image__img {
+//   width: 100%;
+//   height: 100%;
+// }
+/deep/.van-card {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+
+  .van-card__thumb {
+    width: 42px;
+    height: 42px;
+    margin-right: 10px;
+
+    .van-image {
+      width: 100%;
+      img {
+        object-fit: cover !important;
+      }
+    }
+  }
+  .van-card__content {
+    min-height: 0;
+
+    .van-card__title {
+      height: 17px;
+      font-size: 14px;
+      font-weight: bold;
+      color: #000;
+    }
+
+    .van-card__bottom {
+      line-height: 30px;
+      color: #226aff;
+
+      .van-card__price {
+        color: #226aff;
+      }
+    }
+  }
 }
-.bdtop {
-  border-top: 1px solid #eeeeee;
-}
-.van-image__img {
-  width: 100%;
-  height: 100%;
-}
-.van-card {
-  width: 400px;
-  height: 70px;
-}
-.van-card__title {
-  font-weight: bold;
-  overflow: hidden;
-}
-.van-card__header {
-  width: 400px;
-  height: 70px;
-}
-.van-card__price {
-  color: #226aff;
-  padding-top: 25px;
-}
-.van-card__content {
-  height: 100px;
-}
-.van-num {
-  color: #226aff;
-  padding-top: 25px;
-  margin-right: 20px;
-}
-.van-image__img {
-  width: 100%;
-  height: 100%;
+.van-card:not(:first-child) {
+  margin-top: 0;
 }
 </style>
