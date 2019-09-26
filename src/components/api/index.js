@@ -7,7 +7,17 @@ export const getGoods = (number) => {
 	return axios.get(`/api/getgoods?pageindex=${number}`)
 }
 
+// 获取商品图片
+export const goodsImgs = (id) => {
+	return axios.get(`/api/getthumimages/${id}`)
+}
+
 // 商品详情页
-export const goodDetails = (id) => {
+export const goodsDetails = (id) => {
+	return axios.get(`/api/goods/getinfo/${id}`)
+}
+
+// 图文介绍
+export const imgTxtDetails = (id) => {
 	return axios.get(`/api/goods/getdesc/${id}`)
 }
