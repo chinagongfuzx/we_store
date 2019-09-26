@@ -1,28 +1,27 @@
 <template>
 	<div>
 		<van-pull-refresh v-model="isLoading" @refresh="onRefresh">
-		<van-grid :column-num="2" :border="false" use-slot>
-			<van-grid-item v-for="(item, index) in goods" :key="index" v-on:click="toGoodsDetails(item.id)">
-				<div class="card">
-					<img :src="item.img_url" v-on:error.once="img404">
-					<p class="title">{{item.title}}</p>
-					<div class="other-info">
-						<p class="price">
-							<strong>￥{{item.sell_price}}</strong>
-							<del>￥{{item.market_price}}</del>
-						</p>
-						<p class="description">
-							<font>热卖中</font>
-							<font style="float: right;">剩余 <font style="color: #ed2349">{{item.stock_quantity}}</font> 件</font>
-						</p>
-					</div>
-				</div>
-			</van-grid-item>
-		</van-grid>
+			<van-list :immediate-check="false" v-model="loading" :finished="finished" finished-text="没有更多了" :offset="10" @load="onLoad">
+				<van-grid :column-num="2" :border="false" use-slot>
+					<van-grid-item v-for="(item, index) in goods" :key="index" v-on:click="toGoodsDetails(item.id)">
+						<div class="card">
+							<img :src="item.img_url" v-on:error.once="img404">
+							<p class="title">{{item.title}}</p>
+							<div class="other-info">
+								<p class="price">
+									<strong>￥{{item.sell_price}}</strong>
+									<del>￥{{item.market_price}}</del>
+								</p>
+								<p class="description">
+									<font>热卖中</font>
+									<font style="float: right;">剩余 <font style="color: #ed2349">{{item.stock_quantity}}</font> 件</font>
+								</p>
+							</div>
+						</div>
+					</van-grid-item>
+				</van-grid>
+			</van-list>
 		</van-pull-refresh>
-		<!-- <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
-			<van-cell v-for="item in list" :key="item" :title="item" />
-		</van-list> -->
 	</div>
 </template>
 
@@ -47,6 +46,7 @@
 					data: res
 				} = await getGoods(this.pageindex)
 				console.log(res);
+				if (res.message.length === 0) return this.finished = true
 				this.goods.push(...res.message)
 			},
 			img404(e) {
@@ -65,20 +65,10 @@
 					message: '加载成功'
 				})
 			},
-			onLoad() {
-				// 异步更新数据
-				setTimeout(() => {
-					for (let i = 0; i < 10; i++) {
-						this.list.push(this.list.length + 1);
-					}
-					// 加载状态结束
-					this.loading = false;
-
-					// 数据全部加载完成
-					if (this.list.length >= 40) {
-						this.finished = true;
-					}
-				}, 500);
+			async onLoad() {
+				this.pageindex++
+				this.init()
+				this.loading = false
 			}
 		},
 		created() {
@@ -86,10 +76,9 @@
 		},
 	}
 </script>
-<style lang="less" scoped>
+<style lang="less" scoped>	
 	.card {
 		box-sizing: border-box;
-		width: 100%;
 		border: 1px solid #ccc;
 		padding-top: 12px;
 		font-size: 14px;

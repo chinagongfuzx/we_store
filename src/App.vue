@@ -54,9 +54,11 @@
 	#app {
 		box-sizing: border-box;
 		padding: 40px 0 50px 0;
+		height: 100%;
 
 		.content {
 			height: 100%;
+			overflow: auto;
 		}
 	}
 
