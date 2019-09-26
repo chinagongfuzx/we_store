@@ -9,7 +9,7 @@
           <div v-lazy:background-image="item.img_url" class="bgBox">
             <div class="textBot">
               <p>{{item.title}}</p>
-              <p>{{item.zhaiyao}}</p>
+              <p v-html="item.zhaiyao"></p>
             </div>
           </div>
         </li>
@@ -51,29 +51,33 @@ export default {
   }
 }
 </script>
-<style scoped lang="less">
+<style scoped lang='less'>
   .item_list {
     padding: 0 10px;
     li {
       height: 300px;
       margin: 10px 0;
+      border-radius: 10px;
       .bgBox {
         position: relative;
         height: 100%;
         width: 100%;
         background-size: cover;
-        border-radius: 5px;
+        border-radius: 6px;
         .textBot {
           position: absolute;
           bottom: 0;
           height: 75px;
           width: 100%;
-          padding-left: 8px;
-          overflow: hidden;
+          padding: 0 7px;
           font-size: 12px;
           color: #ffffff;
           background-color: rgba(0, 0, 0, 0.4);
+          overflow: hidden;
+          // white-space: nowrap;
+          text-overflow: ellipsis;
           box-sizing: border-box;
+          border-radius: 0 0 6px 6px;
           p {
             margin: 5px 0; 
           }
