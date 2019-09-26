@@ -20,7 +20,11 @@
         :images="ImgList">
       </van-image-preview> -->
     </div>
+<<<<<<< HEAD
 </template>        
+=======
+</template>          
+>>>>>>> b787ff976c53b7ae0e7716b371909fbcb538c1a8
 <script>
 import { ImagePreview } from 'vant'
 import { getPicDetailApi, getPicApi } from '@/api'
@@ -63,8 +67,8 @@ export default {
       this.$nextTick(()=> {
         document.querySelectorAll('.van-image__img').forEach(item=>{
           item.style.objectFit = 'none'
-          item.width="300px"
-          item.margin = "0 auto"
+          item.width='300px'
+          item.margin = '0 auto'
         })
       })
     }
