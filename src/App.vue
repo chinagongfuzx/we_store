@@ -9,7 +9,8 @@
       @click-right="onClickRight"
       fixed
     />
-    <van-tabbar v-model="active" fixed v-if="this.$route.path !== '/cart'">
+    <van-submit-bar v-if="this.$route.path === '/cart'" :price="0" button-text="提交订单" @submit="onSubmit" />
+    <van-tabbar v-else v-model="active" fixed>
       <van-tabbar-item name="login" to="/login">
         <van-icon slot="icon" class="iconfont" class-prefix="icon" name="index-fill"></van-icon>
         <span>首页</span>
@@ -95,6 +96,11 @@ export default {
 
 .iconfont {
   font-size: 18px;
+}
+
+.van-button--danger {
+    background-color: #f44;
+    border-color: #f44;
 }
 
 .slide-left-leave-to,
