@@ -20,7 +20,7 @@
         :images="ImgList">
       </van-image-preview> -->
     </div>
-</template>        
+</template>          
 <script>
 import { ImagePreview } from 'vant'
 import { getPicDetailApi, getPicApi } from '@/api'
@@ -63,8 +63,8 @@ export default {
       this.$nextTick(()=> {
         document.querySelectorAll('.van-image__img').forEach(item=>{
           item.style.objectFit = 'none'
-          item.width="300px"
-          item.margin = "0 auto"
+          item.width='300px'
+          item.margin = '0 auto'
         })
       })
     }
