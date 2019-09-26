@@ -8,10 +8,10 @@ import 'vant/lib/index.css'
 import './assets/css/global.css'
 import './assets/font/iconfont.css'
 import moment from 'moment'
-// 时间
-Vue.filter('dateFormat', function(date) {
-  return moment(date).format('YYYY-M-D')
-})
+
+import './assets/css/common.css'
+import './plugins/vantUI'
+
 Vue.use(Vant)
 Vue.config.productionTip = false
 

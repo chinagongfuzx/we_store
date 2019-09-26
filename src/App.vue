@@ -79,11 +79,14 @@ export default {
 #app {
   box-sizing: border-box;
   padding: 40px 0 50px 0;
+  height: 100%;
 
   .content {
     height: 100%;
+    overflow: auto;
   }
 }
+
 .van-nav-bar {
   height: 40px;
   line-height: 40px;
@@ -95,6 +98,7 @@ export default {
     color: #fff;
     font-size: 14px;
   }
+
   .van-nav-bar__text:active {
     background-color: #1989fa;
   }
