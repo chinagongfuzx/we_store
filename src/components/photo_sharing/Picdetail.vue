@@ -55,7 +55,6 @@ export default {
       })
     },
     ImgClick (index) {
-      // console.log(this.ImgList)
       this.show = true
       // ImagePreview({
       //   images: this.ImgList,
