@@ -40,6 +40,7 @@ export default {
   methods: {
     async publish() {
       if (!this.commentVal.trim()) {
+        this.commentVal = ''
         return this.$toast.fail("留言不能为空")
       }
       const { data: res } = await publishCommentApi({ id: this.id, content: this.commentVal })
