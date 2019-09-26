@@ -20,11 +20,7 @@
         :images="ImgList">
       </van-image-preview> -->
     </div>
-<<<<<<< HEAD
-</template>        
-=======
 </template>          
->>>>>>> b787ff976c53b7ae0e7716b371909fbcb538c1a8
 <script>
 import { ImagePreview } from 'vant'
 import { getPicDetailApi, getPicApi } from '@/api'
