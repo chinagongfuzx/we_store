@@ -24,6 +24,9 @@
   </div>
 </template>
 <script>
+import Vue from 'vue';
+import { Lazyload } from 'vant';
+Vue.use(Lazyload);
 import { cateListApi, getPicListApi } from '@/api'
 export default {
   data () {
