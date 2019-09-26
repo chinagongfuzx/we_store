@@ -86,7 +86,7 @@ export default {
   border-top: 1px solid #EEEEEE;
 }
 .van-image__img {
-    width: 100%;
+    width: 100% ;
     height: 100%;
 }
 .van-card {
@@ -105,18 +105,13 @@ export default {
 .van-card__content {
     height: 100px;
 }
+.van-card__header {
+   width: 400px;
+   height: 70px;
+}
 .van-num {
   color: #226AFF;
   padding-top: 25px;
   margin-right: 20px;
-}
-.van-image__img {
-    width: 100%;
-    height: 100%;
-}
-
-.van-card {
-    width: 400px;
-    height: 70px;
 }
 </style>
