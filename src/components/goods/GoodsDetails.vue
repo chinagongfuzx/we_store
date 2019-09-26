@@ -73,7 +73,7 @@
 				localStorage.setItem('carData', JSON.stringify(arr))
 				this.$toast({
 					duration: 1000,
-					message: '加载成功'
+					message: '添加成功'
 				})
 			},
 			addCar() {
@@ -92,7 +92,7 @@
 						localStorage.setItem('carData', JSON.stringify(carArr))
 						this.$toast({
 							duration: 1000,
-							message: '加载成功'
+							message: '添加成功'
 						})
 					} else {
 						this.createStorage(carArr)
