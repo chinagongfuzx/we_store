@@ -9,8 +9,7 @@
       @click-right="onClickRight"
       fixed
     />
-    <van-submit-bar v-if="this.$route.path === '/cart'" :price="0" button-text="提交订单" @submit="onSubmit" />
-    <van-tabbar v-else v-model="active" fixed>
+    <van-tabbar v-if="this.$route.path !== '/cart'" v-model="active" fixed>
       <van-tabbar-item name="login" to="/login">
         <van-icon slot="icon" class="iconfont" class-prefix="icon" name="index-fill"></van-icon>
         <span>首页</span>
@@ -22,8 +21,8 @@
       <van-tabbar-item name="cart" to="cart" icon="cart-o" :info="0">购物车</van-tabbar-item>
       <van-tabbar-item name="search" to="search" icon="search">搜索</van-tabbar-item>
     </van-tabbar>
-    <transition :name="transtionName" mode="out-in">
-      <router-view style="min-height: 100%"></router-view>
+    <transition :name="transtionName" mode="out-in" @before-enter="beforeEnter" @after-enter="afterEnter">
+      <router-view :isSubBar="isSubBar" style="min-height: 100%"></router-view>
     </transition>
   </div>
 </template>
@@ -34,7 +33,8 @@ export default {
       active: 'login',
       isBack: false,
       actives: ['/login', '/vip', '/cart', '/search'],
-      transtionName: 'slide-left'
+      transtionName: 'slide-left',
+      isSubBar: true
     }
   },
   methods: {
@@ -54,6 +54,12 @@ export default {
       } else {
         this.active = 'login'
       }
+    },
+    beforeEnter() {
+      this.isSubBar = false
+    },
+    afterEnter() {
+      this.isSubBar = true
     }
   },
   watch: {
@@ -96,11 +102,6 @@ export default {
 
 .iconfont {
   font-size: 18px;
-}
-
-.van-button--danger {
-    background-color: #f44;
-    border-color: #f44;
 }
 
 .slide-left-leave-to,

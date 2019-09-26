@@ -1,15 +1,18 @@
 <template>
   <div>
     <div class="empty">
-      <img src="../../assets/pic/cart_empty.png" alt="">
+      <img src="../../assets/pic/cart_empty.png" alt="" />
       <p>购物车空空如也</p>
       <van-button type="info" size="mini">去逛逛</van-button>
     </div>
+    <van-submit-bar :class="isSubBar? '' : 'bar-high'" :price="0" button-text="提交订单" />
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  props: ['isSubBar']
+}
 </script>
 
 <style lang="less" scoped>
@@ -21,5 +24,14 @@ export default {}
   img {
     width: 100px;
   }
+}
+
+.van-button--danger {
+    background-color: #f44;
+    border-color: #f44;
+}
+
+.bar-high {
+  bottom: -50px;
 }
 </style>
