@@ -50,6 +50,20 @@ export default {
   },
   methods: {
     async onSearch() {
+      if (!this.value) {
+        this.value = ''
+        return this.$toast({
+          duration: 2000,
+          message: '请输入搜索内容'
+        })
+      }
+      if (!this.value.trim()) {
+        this.value = ''
+        return this.$toast.fail({
+          duration: 2000,
+          message: `搜索内容\n不能为空`
+        })
+      }
       const { data: res } = await getSearchList();
       this.SearchList = res.message;
       this.flag = true;
