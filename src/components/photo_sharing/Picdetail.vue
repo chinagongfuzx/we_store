@@ -3,7 +3,7 @@
       <div v-for="item in detailList" :key="item.id">
         <h4>{{item.title}}</h4>
         <van-row type="flex" justify="space-between">
-          <van-col span="12">发表时间：{{item.add_time | dataFormat }}</van-col>
+          <van-col span="12">发表时间：{{item.add_time | dateFormat }}</van-col>
           <van-col>点击：{{item.click}}</van-col>
         </van-row>
         <hr/>
