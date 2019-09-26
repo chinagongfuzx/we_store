@@ -54,7 +54,7 @@
 				const {
 					data: imgList
 				} = await goodsImgs(sessionStorage.getItem('goodsId'))
-				// console.log(imgList);
+				console.log(imgList);
 				this.imgList = imgList.message
 
 				const {
@@ -67,8 +67,10 @@
 			createStorage(arr) {
 				arr.push({
 					id: this.details.id,
+					title: this.details.title,
 					conut: this.buyCount,
-					price: this.details.sell_price
+					price: this.details.sell_price,
+					img_url: this.imgList[0].src
 				})
 				localStorage.setItem('carData', JSON.stringify(arr))
 				this.$toast({
@@ -84,11 +86,13 @@
 				} else {
 					let carArr = JSON.parse(carData)
 					// console.log(carArr);
-					let additem = carArr.find((i) => i.id == this.details.id)
+					let additem = carArr.find((i) => i.id === this.details.id)
 					// console.log(additem);
 					if (additem) {
 						additem.conut = this.buyCount
 						additem.price = this.details.sell_price
+						additem.price = this.details.sell_price
+						additem.img_url = this.imgList[0].src
 						localStorage.setItem('carData', JSON.stringify(carArr))
 						this.$toast({
 							duration: 1000,
