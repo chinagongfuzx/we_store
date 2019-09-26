@@ -9,6 +9,8 @@ import './assets/css/global.css'
 import './assets/font/iconfont.css'
 import moment from 'moment'
 
+import './assets/css/common.css'
+import './plugins/vantUI'
 Vue.use(Vant)
 
 Vue.config.productionTip = false

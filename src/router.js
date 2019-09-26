@@ -4,7 +4,8 @@ import login from './components/login.vue'
 import news from './components/news/news.vue'
 import NewsDetails from './components/news/NewsDetails.vue'
 import photo_sharing from './components/photo_sharing/photo_sharing.vue'
-import goods from './components/goods/goods.vue'
+import Goods from './components/Goods.vue'
+import GoodDetails from './components/GoodDetails.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -29,9 +30,7 @@ export default new Router({
       path: '/photo_sharing',
       component: photo_sharing
     },
-    {
-      path: '/goods',
-      component: goods
-    }
+    { path: '/goods', component: Goods },
+    { path: '/goodDetails', component: GoodDetails }
   ]
 })
