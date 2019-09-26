@@ -17,8 +17,8 @@ export default {
   methods: {
    async addSearch() {
      const {data:res}=  await addSearchList(this.value)
-     if(res.status !== 0) return this.$Notify({ type: 'danger', message: '添加商品失败' })
-     this.$Notify({ type: 'success', message: '添加商品成功' });
+     if(res.status !== 0) return this.$Notify({ type: 'danger', message: '添加失败' })
+     this.$Notify({ type: 'success', message: '添加成功' });
     }
   }
 };

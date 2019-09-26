@@ -51,11 +51,9 @@ export default {
   methods: {
     async onSearch() {
       const { data: res } = await getSearchList();
-      //   console.log(res)
       this.SearchList = res.message;
       this.flag = true;
       this.valueList.push(this.value);
-      //   console.log(res.message)
     },
     onCancel() {
       this.value = "";
@@ -67,10 +65,10 @@ export default {
           const result = await this.$dialog.confirm({
             message: "确定删除吗？"
           });
-          //   console.log(result);
           if (result !== "confirm") return;
-          const { data: res } = await delSearchList(detail.name);
-          this.onSearch();
+          const { data: res } = await delSearchList(detail.name)
+          this.$Notify({ type: 'success', message: '删除成功' });
+          this.onSearch()
           break;
       }
     },
