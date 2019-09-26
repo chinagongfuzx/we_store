@@ -5,7 +5,7 @@
       <p>购物车空空如也</p>
       <van-button type="info" size="mini" @click="shop">去逛逛</van-button>
     </div>
-    <van-submit-bar :class="isSubBar? '' : 'bar-high'" :price="0" button-text="提交订单" />
+    <van-submit-bar :class="isSubBar ? '' : 'bar-high'" :price="0" button-text="提交订单" />
   </div>
 </template>
 
@@ -29,11 +29,15 @@ export default {
   img {
     width: 100px;
   }
+  
+  p {
+    font-size: 16px;
+  }
 }
 
 .van-button--danger {
-    background-color: #f44;
-    border-color: #f44;
+  background-color: #f44;
+  border-color: #f44;
 }
 
 .bar-high {
