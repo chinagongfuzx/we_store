@@ -15,10 +15,10 @@
         <p v-html="item.content" class="content"></p>
       </div>
       <comment :id="id"></comment>
-      <van-image-preview
+      <!-- <van-image-preview
         v-model="show"
         :images="ImgList">
-      </van-image-preview>
+      </van-image-preview> -->
     </div>
 </template>        
 <script>
@@ -32,7 +32,7 @@ export default {
       detailList: [],
       picList: [],
       ImgList: [],
-      show: false
+      // show: false
     }
   },
   created() {
@@ -55,11 +55,11 @@ export default {
       })
     },
     ImgClick (index) {
-      this.show = true
-      // ImagePreview({
-      //   images: this.ImgList,
-      //   startPosition: index,
-      // })
+      // this.show = trues
+      ImagePreview({
+        images: this.ImgList,
+        startPosition: index,
+      })
       this.$nextTick(()=> {
         document.querySelectorAll('.van-image__img').forEach(item=>{
           item.style.objectFit = 'none'
