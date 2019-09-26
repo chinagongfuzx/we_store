@@ -88,13 +88,15 @@ export default {
 .van-image__img {
     width: 100% ;
     height: 100%;
+    
 }
 .van-card {
-   width: 400px;
+   width: 100%;
    height: 70px;
 }
 .van-card__title {
     font-weight: bold;
+     white-space: nowrap;
     overflow: hidden;
 }
 
@@ -102,11 +104,12 @@ export default {
     color: #226AFF;
     padding-top: 25px;
 }
-.van-card__content {
-    height: 100px;
+div .van-card__content {
+   width: 100% !important;
+   height: 70px !important;
 }
 .van-card__header {
-   width: 400px;
+   width: 100% !important;
    height: 70px;
 }
 .van-num {
@@ -114,4 +117,5 @@ export default {
   padding-top: 25px;
   margin-right: 20px;
 }
+
 </style>
