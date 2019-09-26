@@ -10,7 +10,6 @@ import './assets/font/iconfont.css'
 import moment from 'moment'
 
 Vue.use(Vant)
-
 Vue.config.productionTip = false
 
 Vue.filter('dateFormat', function(date) {

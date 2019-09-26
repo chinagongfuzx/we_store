@@ -3,13 +3,13 @@
       <div v-for="item in detailList" :key="item.id">
         <h4>{{item.title}}</h4>
         <van-row type="flex" justify="space-between">
-          <van-col span="12">发表时间：{{item.add_time | dataFormat }}</van-col>
+          <van-col span="12">发表时间：{{item.add_time | dateFormat }}</van-col>
           <van-col>点击：{{item.click}}</van-col>
         </van-row>
         <hr/>
         <ul class="pic">
           <li v-for="(item, index) in picList" :key="index">
-            <img :src="item.src" alt="" @click="ImgClick">
+            <img :src="item.src" alt="" @click="ImgClick(index)">
           </li>
         </ul>
         <p v-html="item.content"></p>
@@ -27,7 +27,7 @@ export default {
     return {
       detailList: [],
       picList: [],
-      ImgList: []
+      ImgList: [],
     }
   },
   created() {
@@ -45,15 +45,19 @@ export default {
       const { data: res } = await getPicApi(this.$route.params.id)
       console.log(res)
       this.picList = res.message
-    },
-    ImgClick () {
       this.picList.forEach(item => {
         this.ImgList.push(item.src)
       })
-      console.log(this.ImgList)
-      ImagePreview(this.ImgList)
     },
-    onClose() {
+    ImgClick (index) {
+      // console.log(this.ImgList)
+      ImagePreview({
+        images: this.ImgList,
+        startPosition: index,
+        onClose() {
+        }
+      })
+      // document.getElementsByClassName('.van-image__img').style.objectFit='fill'
     }
   },
   components: {
@@ -65,7 +69,6 @@ export default {
   .detailBox {
     padding: 0 5px;
     overflow: hidden;
-    margin-bottom: 50px;
       h4 {
       text-align: center;
       font-size: 15px;
@@ -97,10 +100,12 @@ export default {
         height: 100%;
         box-shadow: -2px 0px 5px 1px #ccc,0px -2px 5px 1px #ccc,2px 0px 5px 1px #ccc,0px 2px 5px 1px #ccc;
       }
+        
     }
   }
-  .van-image__img {
-    width: 100%;
-    height: 100%;
+  .van-image-preview{
+/deep/img {
+        object-fit: fill!important
+      }
   } 
 </style>
