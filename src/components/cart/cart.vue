@@ -5,19 +5,16 @@
       <p>购物车空空如也</p>
       <van-button type="info" size="mini" @click="shop">去逛逛</van-button>
     </div>
-    <van-card
-      v-else
-      v-for="(item, index) in cartList"
-      :key="index"
-      :num="item.count"
-      :price="item.sell_price"
-      :title="item.title"
-      :thumb="item.thumb_path"
-    >
-      <div slot="footer">
-        <van-stepper v-model="item.count" @change="countChange(item.id, item.count)" />
-      </div>
-    </van-card>
+    <van-swipe-cell :on-close="onClose" :name="item.id" v-else v-for="(item, index) in cartList" :key="index">
+      <van-card :num="item.count" :price="item.sell_price" :title="item.title" :thumb="item.thumb_path">
+        <div slot="footer">
+          <van-stepper v-model="item.count" integer />
+        </div>
+      </van-card>
+      <template slot="right">
+        <van-button style="height: 100%" square type="danger" text="删除" />
+      </template>
+    </van-swipe-cell>
     <van-submit-bar :class="isSubBar ? '' : 'bar-high'" :price="total" button-text="提交订单" />
   </div>
 </template>
@@ -28,8 +25,8 @@ export default {
   props: ['isSubBar'],
   data() {
     return {
-      // total: 0,
-      cartList: []
+      cartList: [],
+      tempGoodsCount: 0
     }
   },
   methods: {
@@ -59,16 +56,36 @@ export default {
         }
       })
       this.$store.commit('saveCar', this.cartList)
+    },
+    async onClose(clickPosition, instance, detail) {
+      switch (clickPosition) {
+        case 'left':
+        case 'cell':
+        case 'outside':
+          instance.close()
+          break
+        case 'right':
+          const delResult = await this.$dialog.confirm({
+            message: '确定删除该商品吗？'
+          }).catch(err => err)
+          if (delResult === 'confirm') {
+            this.delGoods(detail.name)
+          }
+          break
+      }
+    },
+    delGoods(id) {
+      this.cartList = this.cartList.filter(item => item.id !== id)
+      this.$store.commit('saveCar', this.cartList)
     }
   },
   computed: {
     total() {
-      let temp = 0
-      if (!this.$store.state.count) return temp
-      this.cartList.map(item => {
-        temp += item.count * item.sell_price
-      })
-      return temp * 100
+      return this.$store.state.count
+        ? this.cartList.reduce((acc, val) => {
+            return acc + val.count * val.sell_price * 100
+          }, 0)
+        : 0
     }
   },
   created() {
@@ -91,6 +108,10 @@ export default {
   p {
     font-size: 16px;
   }
+}
+
+.van-swipe-cell:not(:first-child) {
+  border-top: 1px solid #e6e6e6;
 }
 
 .van-button--danger {

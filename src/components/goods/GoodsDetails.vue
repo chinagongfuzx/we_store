@@ -17,7 +17,7 @@
       </p>
       <p class="count">
         购买数量
-        <van-stepper v-model="buyCount" min="1" />
+        <van-stepper v-model="buyCount" integer />
       </p>
       <p class="btns">
         <van-button size="small" type="info">立即购买</van-button>
