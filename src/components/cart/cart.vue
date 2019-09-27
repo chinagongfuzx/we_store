@@ -64,11 +64,13 @@ export default {
           instance.close()
           break
         case 'right':
-          const delResult = await this.$dialog.confirm({
+          const delResult = await this.$dialog
+            .confirm({
               message: '确定删除该商品吗？',
               confirmButtonText: '删除',
               confirmButtonColor: '#ff0000'
-            }).catch(err => err)
+            })
+            .catch(err => err)
           if (delResult === 'confirm') {
             this.delGoods(detail.name)
           }
