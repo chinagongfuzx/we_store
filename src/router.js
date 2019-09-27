@@ -1,14 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import photoSharing from './components/photo_sharing/photo_sharing.vue'
+import PhotoSharing from './components/photo_sharing/Photo_sharing.vue'
 import Picdetail from './components/photo_sharing/Picdetail.vue'
-import login from './components/login.vue'
-import news from './components/news/news.vue'
+import Login from './components/Login.vue'
+import News from './components/news/News.vue'
 import NewsDetails from './components/news/NewsDetails.vue'
-import vip from './components/vip/vip.vue'
-import cart from './components/cart/cart.vue'
-import search from './components/search/search.vue'
-import addgoods from './components/search/searchAdd.vue'
+import Vip from './components/vip/Vip.vue'
+import Cart from './components/cart/Cart.vue'
+import Search from './components/search/Search.vue'
+import Addgoods from './components/search/SearchAdd.vue'
 
 import Goods from './components/goods/Goods.vue'
 import ImgTxtDetails from './components/goods/ImgTxtDetails.vue'
@@ -25,19 +25,19 @@ export default new Router({
     },
     {
       path: '/login',
-      component: login
+      component: Login
     },
     {
       path: '/vip',
-      component: vip
+      component: Vip
     },
     {
       path: '/cart',
-      component: cart
+      component: Cart
     },
     {
       path: '/news',
-      component: news
+      component: News
     },
     {
       path: '/news/detail/:newId',
@@ -46,7 +46,7 @@ export default new Router({
     },
     {
       path: '/photo_sharing',
-      component: photoSharing,
+      component: PhotoSharing,
       meta: {
         isSaveScroll: true
       }
@@ -70,11 +70,11 @@ export default new Router({
     },
     {
       path: '/search',
-      component: search
+      component: Search
     },
     {
       path: '/addgoods',
-      component: addgoods
+      component: Addgoods
     }, {
       path: '/goodsComment',
       component: GoodsComment

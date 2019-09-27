@@ -70,7 +70,7 @@ export default {
             message: '确定删除吗？',
             confirmButtonText: '删除',
             confirmButtonColor: '#ff0000'
-          })
+          }).catch(err => err)
           if (result !== 'confirm') return
           await delSearchList(detail.name)
           this.$notify({
