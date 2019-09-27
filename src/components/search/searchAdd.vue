@@ -29,7 +29,11 @@ export default {
         })
       }
       const { data: res } = await addSearchList(this.value)
-      if (res.status !== 0) return this.$Notify({ type: 'danger', message: '添加失败' })
+      if (res.status !== 0)
+        return this.$notify({
+          type: 'danger',
+          message: '添加失败'
+        })
       this.$notify({
         type: 'success',
         message: '添加成功',
