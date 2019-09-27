@@ -58,12 +58,8 @@ img {
   width: 100%;
   height: 100%;
 }
-/deep/.van-swipe {
+.van-swipe {
   height: 200px;
-
-  .van-swipe__track {
-    margin-top: 0 !important;
-  }
 }
 .image {
   width: 60px;

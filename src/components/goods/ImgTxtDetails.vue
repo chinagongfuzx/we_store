@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { imgTxtDetails } from '../api'
+import { imgTxtDetails } from '@/api'
 export default {
   data() {
     return {
@@ -29,13 +29,35 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-.wrap {
+/deep/.wrap {
   margin: 0 10px;
-}
-.title {
-  color: #226aff;
-  text-align: center;
-  padding: 10px 0;
-  border-bottom: 1px solid #ddd;
+  .title {
+    color: #226aff;
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  .img-txt-wrap p {
+    margin: 8px;
+  }
+  .img-txt-wrap [align='center'] {
+    margin: 0;
+  }
+
+  .img-txt-wrap img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  tr {
+    width: 10rem;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+
+    img {
+      width: 100%;
+    }
+  }
 }
 </style>

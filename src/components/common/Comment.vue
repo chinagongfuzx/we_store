@@ -18,19 +18,19 @@
         </div>
       </div>
       <van-button plain hairline type="danger" :disabled="isMore" @click="getCommentList">{{
-        isMore ? "没有更多了" : "加载更多"
+        isMore ? '没有更多了' : '加载更多'
       }}</van-button>
     </div>
   </div>
 </template>
 
 <script>
-import { getCommentListApi, publishCommentApi } from "@/api"
+import { getCommentListApi, publishCommentApi } from '@/api'
 export default {
-  props: ["id"],
+  props: ['id'],
   data() {
     return {
-      commentVal: "",
+      commentVal: '',
       commentList: [],
       pageIndex: 0,
       loading: false,
@@ -41,11 +41,21 @@ export default {
     async publish() {
       if (!this.commentVal.trim()) {
         this.commentVal = ''
-        return this.$toast.fail("留言不能为空")
+        return this.$toast.fail({
+          message: '留言不能为空',
+          duration: 1000
+        })
       }
       const { data: res } = await publishCommentApi({ id: this.id, content: this.commentVal })
-      if (res.status) return this.$toast.fail("发表失败")
-      this.$toast.success("发表成功")
+      if (res.status)
+        return this.$toast.fail({
+          message: '发表失败',
+          duration: 1000
+        })
+      this.$toast.success({
+        message: '发表成功',
+        duration: 1000
+      })
       this.commentVal = ''
     },
     async getCommentList() {

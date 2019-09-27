@@ -12,14 +12,16 @@
         <van-grid :column-num="2" :border="false" use-slot>
           <van-grid-item v-for="(item, index) in goods" :key="index" v-on:click="toGoodsDetails(item.id)">
             <div class="card">
-              <img :src="item.img_url" v-on:error.once="img404" />
+              <div class="img_box">
+                <img :src="item.img_url" v-on:error.once="img404" />
+              </div>
               <p class="title">{{ item.title }}</p>
               <div class="other-info">
-                <p class="price">
-                  <strong>￥{{ item.sell_price }}</strong>
+                <p>
+                  <span>￥{{ item.sell_price }}</span>
                   <del>￥{{ item.market_price }}</del>
                 </p>
-                <p class="description">
+                <p>
                   <font>热卖中</font>
                   <font style="float: right;"
                     >剩余 <font style="color: #ed2349">{{ item.stock_quantity }}</font> 件</font
@@ -35,7 +37,7 @@
 </template>
 
 <script>
-import { getGoods } from '../api'
+import { getGoods } from '@/api'
 export default {
   data() {
     return {
@@ -61,14 +63,16 @@ export default {
       sessionStorage.setItem('goodsId', id)
       this.$router.push(`/goodsDetails`)
     },
-    async onRefresh() {
+    onRefresh() {
       this.pageindex = 1
-      await this.init()
-      this.isLoading = false
-      this.$toast({
-        duration: 1000,
-        message: '加载成功'
-      })
+      setTimeout(async () => {
+        await this.init()
+        this.isLoading = false
+        this.$toast.success({
+          duration: 1000,
+          message: '加载成功'
+        })
+      }, 500)
     },
     async onLoad() {
       this.pageindex++
@@ -82,54 +86,65 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-.card {
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  padding-top: 12px;
-  font-size: 14px;
+/deep/.van-grid {
+  padding: 0 3px;
+  .van-grid-item {
+    padding: 15px 7px 0;
 
-  img {
-    display: block;
-    margin: 0 auto;
-    width: 80%;
-    margin-bottom: 28px;
-  }
-
-  .title {
-    box-sizing: border-box;
-    padding: 0 8px;
-    margin: 0 0 12px;
-    -webkit-line-clamp: 2;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .other-info {
-    background: #f2f2f2;
-
-    p {
-      margin: 0 8px;
+    .van-grid-item__content {
+      padding: 0;
     }
 
-    .price {
+    .card {
+      box-sizing: border-box;
+      border: 1px solid #ccc;
       padding-top: 10px;
-
-      strong {
-        color: #ed2349;
+      font-size: 14px;
+      .img_box {
+        height: 200px;
+        img {
+          display: block;
+          margin: 0 auto;
+          width: 148.5px;
+          margin-bottom: 28px;
+        }
       }
 
-      del {
-        margin-left: 8px;
-        color: #ccc;
-        font-size: 12px;
+      .title {
+        box-sizing: border-box;
+        height: 57px;
+        padding: 4px 10px;
+        margin: 14px 0;
+        line-height: 24px;
+        color: #000;
+        -webkit-line-clamp: 2;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
-    }
 
-    .description {
-      padding-top: 10px;
-      padding-bottom: 10px;
+      .other-info {
+        padding: 5px 0;
+        background: #f2f2f2;
+
+        p {
+          margin: 0;
+          padding: 0 10px;
+          font-size: 14px;
+          line-height: 24px;
+        }
+
+        span {
+          color: #ed2349;
+          font-size: 16px;
+          margin-right: 15px;
+        }
+
+        del {
+          color: #323233;
+        }
+      }
     }
   }
 }

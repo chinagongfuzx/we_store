@@ -3,16 +3,18 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import Vant from 'vant'
-import 'lib-flexible'
+import moment from 'moment'
+
 import 'vant/lib/index.css'
 import './assets/css/global.css'
 import './assets/font/iconfont.css'
-import moment from 'moment'
 
-import './assets/css/common.css'
+import 'lib-flexible'
+
 import './plugins/vantUI'
 
 Vue.use(Vant)
+
 Vue.config.productionTip = false
 
 Vue.filter('dateFormat', function(date) {

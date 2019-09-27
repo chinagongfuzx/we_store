@@ -56,7 +56,10 @@ export default {
     // 下拉刷新
     onRefresh() {
       setTimeout(() => {
-        this.$toast('刷新成功')
+        this.$toast.success({
+          message: '刷新成功',
+          duration: 1000
+        })
         this.isLoading = false
         // 刷新成功重新请求数据
         this.getNew()

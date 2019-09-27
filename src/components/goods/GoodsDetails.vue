@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import { goodsImgs, goodsDetails } from '../api'
+import { goodsImgs, goodsDetails } from '@/api'
 export default {
   data() {
     return {
@@ -62,11 +62,11 @@ export default {
     createStorage(arr) {
       arr.push({
         id: this.details.id,
-        count: this.buyCount,
+        count: this.buyCount
       })
-			// localStorage.setItem('carData', JSON.stringify(arr))
-			this.$store.commit('saveCar', arr)
-			this.buyCount
+      // localStorage.setItem('carData', JSON.stringify(arr))
+      this.$store.commit('saveCar', arr)
+      this.buyCount
       this.$toast.success({
         duration: 1000,
         message: '已加入购物车'
@@ -108,19 +108,23 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-.card {
+/deep/.card {
   padding: 0 10px 10px;
   margin: 10px 10px 0;
   border-radius: 4px;
   border: 1px solid #ddd;
-
-  .van-swipe-item {
-    height: 160px;
-    text-align: center;
-
-    img {
-      width: auto;
+  .van-swipe {
+    .van-swipe__track {
+      margin-top: 10px;
+    }
+    .van-swipe-item {
       height: 160px;
+      text-align: center;
+
+      img {
+        width: auto;
+        height: 160px;
+      }
     }
   }
 

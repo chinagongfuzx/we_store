@@ -26,7 +26,6 @@ export default {
   data() {
     return {
       cartList: [],
-      tempGoodsCount: 0
     }
   },
   methods: {
