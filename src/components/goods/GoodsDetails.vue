@@ -66,7 +66,6 @@ export default {
       })
       // localStorage.setItem('carData', JSON.stringify(arr))
       this.$store.commit('saveCar', arr)
-      this.buyCount
       this.$toast.success({
         duration: 1000,
         message: '已加入购物车'
@@ -107,6 +106,7 @@ export default {
   }
 }
 </script>
+
 <style lang="less" scoped>
 /deep/.card {
   padding: 0 10px 10px;

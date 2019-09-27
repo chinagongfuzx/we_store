@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import photo_sharing from './components/photo_sharing/photo_sharing.vue'
+import photoSharing from './components/photo_sharing/photo_sharing.vue'
 import Picdetail from './components/photo_sharing/Picdetail.vue'
 import login from './components/login.vue'
 import news from './components/news/news.vue'
@@ -46,7 +46,7 @@ export default new Router({
     },
     {
       path: '/photo_sharing',
-      component: photo_sharing,
+      component: photoSharing,
       meta: {
         isSaveScroll: true
       }

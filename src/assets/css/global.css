@@ -1,12 +1,12 @@
 html,
 body,
 #app {
-    height: 100%;
-    overflow-x: hidden;
-    background-color: #fff;
-    font-family: '微软雅黑';
+  height: 100%;
+  overflow-x: hidden;
+  background-color: #fff;
+  font-family: '微软雅黑';
 }
 
 ::-webkit-scrollbar {
-    display: none;
+  display: none;
 }

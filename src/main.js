@@ -17,7 +17,7 @@ Vue.use(Vant)
 
 Vue.config.productionTip = false
 
-Vue.filter('dateFormat', function(date) {
+Vue.filter('dateFormat', function (date) {
   return moment(date).format('YYYY-M-D')
 })
 

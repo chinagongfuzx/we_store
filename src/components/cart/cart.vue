@@ -25,7 +25,7 @@ export default {
   props: ['isSubBar'],
   data() {
     return {
-      cartList: [],
+      cartList: []
     }
   },
   methods: {
@@ -64,9 +64,11 @@ export default {
           instance.close()
           break
         case 'right':
-          const delResult = await this.$dialog.confirm({
-            message: '确定删除该商品吗？'
-          }).catch(err => err)
+          const delResult = await this.$dialog
+            .confirm({
+              message: '确定删除该商品吗？'
+            })
+            .catch(err => err)
           if (delResult === 'confirm') {
             this.delGoods(detail.name)
           }
@@ -80,11 +82,9 @@ export default {
   },
   computed: {
     total() {
-      return this.$store.state.count
-        ? this.cartList.reduce((acc, val) => {
-            return acc + val.count * val.sell_price * 100
-          }, 0)
-        : 0
+      return this.$store.state.count ? this.cartList.reduce((acc, val) => {
+        return acc + val.count * val.sell_price * 100
+      }, 0) : 0
     }
   },
   created() {

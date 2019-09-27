@@ -20,7 +20,8 @@
         :images="ImgList">
       </van-image-preview> -->
   </div>
-</template>          
+</template>
+
 <script>
 import { ImagePreview } from 'vant'
 import { getPicDetailApi, getPicApi } from '@/api'
@@ -74,6 +75,7 @@ export default {
   }
 }
 </script>
+
 <style lang="less" scoped>
 .detailBox {
   padding: 0 5px;

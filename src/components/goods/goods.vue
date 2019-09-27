@@ -85,6 +85,7 @@ export default {
   }
 }
 </script>
+
 <style lang="less" scoped>
 /deep/.van-grid {
   padding: 0 3px;

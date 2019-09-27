@@ -12,7 +12,7 @@
 
         <van-list finished-text="没有更多了">
           <van-card
-            v-for="(item, i1) in newsList"
+            v-for="item in newsList"
             :key="item.id"
             :title="item.title"
             :thumb="item.img_url"
@@ -26,6 +26,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import { getNewsList } from '@/api'
 
@@ -71,6 +72,7 @@ export default {
   }
 }
 </script>
+
 <style lang="less" scoped>
 .box {
   display: flex;

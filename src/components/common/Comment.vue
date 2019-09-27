@@ -47,11 +47,13 @@ export default {
         })
       }
       const { data: res } = await publishCommentApi({ id: this.id, content: this.commentVal })
-      if (res.status)
-        return this.$toast.fail({
+      if (res.status) {
+        this.$toast.fail({
           message: '发表失败',
           duration: 1000
         })
+        return
+      }
       this.$toast.success({
         message: '发表成功',
         duration: 1000

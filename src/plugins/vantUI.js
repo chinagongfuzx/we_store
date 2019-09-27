@@ -1,4 +1,4 @@
-import Vue from 'vue' 
+import Vue from 'vue'
 import vantUI from 'vant-ui'
 import 'vant-ui/scss/base.scss'
 
