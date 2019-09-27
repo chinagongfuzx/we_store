@@ -67,7 +67,9 @@ export default {
           break
         case 'right':
           const result = await this.$dialog.confirm({
-            message: '确定删除吗？'
+            message: '确定删除吗？',
+            confirmButtonText: '删除',
+            confirmButtonColor: '#ff0000'
           })
           if (result !== 'confirm') return
           await delSearchList(detail.name)
