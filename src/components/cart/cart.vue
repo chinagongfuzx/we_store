@@ -8,7 +8,7 @@
     <van-swipe-cell :on-close="onClose" :name="item.id" v-else v-for="(item, index) in cartList" :key="index">
       <van-card :num="item.count" :price="item.sell_price" :title="item.title" :thumb="item.thumb_path">
         <div slot="footer">
-          <van-stepper v-model="item.count" integer />
+          <van-stepper v-model="item.count" integer @change="countChange(item.id, item.count)" />
         </div>
       </van-card>
       <template slot="right">

@@ -73,7 +73,11 @@ export default {
           })
           if (result !== 'confirm') return
           await delSearchList(detail.name)
-          this.$notify({ type: 'success', message: '删除成功' })
+          this.$notify({
+            type: 'success',
+            message: '删除成功',
+            duration: 1000
+          })
           this.onSearch()
           break
       }
